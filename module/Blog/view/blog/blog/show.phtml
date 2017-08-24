@@ -1,0 +1,12 @@
+<?php
+/** @var $artikel \Blog\Entity\Artikel */
+$artikel = $this->show;
+?>
+<h1><?php echo $this->escapeHtml($artikel->getTitel()) ?></h1>
+<h2><?php echo $this->escapeHtml($artikel->getTeaser()) ?></h2>
+<p><?php echo $this->escapeHtml($artikel->getInhalt()) ?></p>
+<P>Veröffentlicht am <?php echo $this->escapeHtml($artikel->getVDatum()->format('d.m.Y')) ?></P>
+<p><?php echo $this->escapeHtml($artikel->getAutor()) ?></p>
+
+
+<a href="<?php echo $this->url('blog'); ?>">Zurück </a>

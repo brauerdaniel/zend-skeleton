@@ -1,0 +1,55 @@
+<?php
+$titel = "Neuer Artikel";
+$this->headtitle($titel);
+?>
+<h1><?= $this->escapeHtml($titel) ?></h1>
+<?php /** @var $form \Blog\Form\ArtikelForm */?>
+<?php $form = $this->hinzufuegen; ?>
+<?php $form->prepare(); ?>
+<?php echo $this->form()->openTag($form); ?>
+
+<?php $titel = $form->get('titel'); ?>
+<div class="form-group">
+    <?php echo $this->formLabel($titel) ?>
+    <?php echo $this->formElement($titel) ?>
+    <?php echo $this->formElementErrors()->render($titel, ['class' => 'help-block']) ?>
+</div>
+
+<?php $teaser = $form->get('teaser'); ?>
+<div class="form-group">
+    <?php echo $this->formLabel($teaser) ?>
+    <?php echo $this->formElement($teaser) ?>
+    <?php echo $this->formElementErrors()->render($teaser, ['class' => 'help-block']) ?>
+</div>
+
+<?php $inhalt = $form->get('inhalt'); ?>
+<div class="form-group">
+    <?php echo $this->formLabel($inhalt) ?>
+    <?php echo $this->formElement($inhalt) ?>
+    <?php echo $this->formElementErrors()->render($inhalt, ['class' => 'help-block']) ?>
+</div>
+
+<?php $datum = $form->get('vDatum'); ?>
+<div class="form-group">
+    <?php echo $this->formLabel($datum) ?>
+    <?php echo $this->formElement($datum) ?>
+    <?php echo $this->formElementErrors()->render($datum, ['class' => 'help-block']) ?>
+</div>
+
+<?php $status = $form->get('status'); ?>
+<div class="form-group">
+    <?php echo $this->formLabel($status) ?>
+    <?php echo $this->formElement($status) ?>
+    <?php echo $this->formElementErrors()->render($status, ['class' => 'help-block']) ?>
+</div>
+
+<?php $autor = $form->get('autor'); ?>
+<div class="form-group">
+    <?php echo $this->formLabel($autor) ?>
+    <?php echo $this->formElement($autor) ?>
+    <?php echo $this->formElementErrors()->render($autor, ['class' => 'help-block']) ?>
+</div>
+
+<?php echo $this->formSubmit($form->get('submit')); ?>
+<?php echo $this->form()->closeTag(); ?>
+

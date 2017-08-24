@@ -44,6 +44,8 @@
             </div>
         </nav>
         <div class="container">
+            <?php echo $this->flashMessenger()->render('success'); ?>
+            <?php echo $this->flashMessenger()->render('error'); ?>
             <?= $this->content ?>
             <hr>
             <footer>

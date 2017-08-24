@@ -1,0 +1,22 @@
+<?php
+/** @var $artikel \Blog\Entity\Artikel */
+$artikel = $this->loeschen;
+$titel = "Artikel Löschen?";
+$url = $this->url('blog/delete', [ 'id' => $artikel->getId()]);
+
+$this->headtitle($titel);
+?>
+
+<p>
+    Möchtest du den Artikel
+    "<?php echo $this->escapeHtml($artikel->getTitel()) ?>" von
+    "<?php echo $this->escapeHtml($artikel->getAutor()) ?>" wirklich löschen?
+</p>
+
+<form action="<?php echo $url ?>" method="post">
+    <div class="form-group">
+        <input type="hidden" name="id" value="<?php echo (int)$artikel->getId() ?>"/>
+        <input type="submit" class="btn btn-danger" name="del" value="Ja"/>
+        <input type="submit" class="btn btn-success" name="del" value="Nein"/>
+    </div>
+</form>

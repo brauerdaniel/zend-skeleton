@@ -57,4 +57,9 @@ return [
             __DIR__ . '/../view',
         ],
     ],
+    'view_helpers' => [
+        'invokables' => [
+            'flashMessenger' => View\Helper\FlashMessenger::class
+        ]
+    ]
 ];

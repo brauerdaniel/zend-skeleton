@@ -1,0 +1,61 @@
+<?php
+
+$titel = "Alle Artikel";
+$this->headtitle($titel);
+?>
+<h1><?php echo $this->escapeHtml($titel); ?></h1>
+
+<p>
+    <a href="<?php echo $this->url('blog/add'); ?>">Neuer Artikel</a>
+</p>
+<table class="table">
+    <tr>
+        <th>Titel</th>
+        <th>Teaser</th>
+        <th>Autor</th>
+        <th>Status</th>
+
+    </tr>
+    <?php /* @var \Blog\Entity\Artikel $artikel */ ?>
+    <?php foreach ($this->alleArtikel as $artikel): ?>
+        <?php
+        $autor = $artikel->getAutor();
+        ?>
+        <tr <?php echo ($artikel->getStatus() ? '' : 'class="danger"'); ?>>
+            <td>
+                <?php echo $this->escapeHtml($artikel->getTitel()); ?>
+            </td>
+            <td>
+                <?php echo $this->escapeHtml($artikel->getTeaser()); ?>
+            </td>
+            <td>
+                <?php echo sprintf("%s %s (%s)", $autor->getVorname(), $autor->getNachname(), $autor->getKuerzel()) ?>
+            </td>
+            <td>
+                <?php
+                if ($artikel->getStatus()) : ?>
+                    <a href="<?php echo $this->url('blog/deaktivieren', ['id' => $artikel->getId()]); ?>">deaktivieren</a>
+
+                <?php else : ?>
+                    <a href="<?php echo $this->url('blog/aktivieren', ['id' => $artikel->getId()]); ?>">aktivieren</a>
+
+                <?php endif; ?>
+            </td>
+            <td>
+                <p>
+                    <a href="<?php echo $this->url('blog/show', ['id' => $artikel->getId()]); ?>">Anzeigen</a>
+                </p>
+            </td>
+            <td>
+                <p>
+                    <a href="<?php echo $this->url('blog/edit', ['id' => $artikel->getId()]); ?>">Bearbeiten </a>
+                </p>
+                <p>
+                    <a href="<?php echo $this->url('blog/delete', ['id' => $artikel->getId()]); ?>">
+                        Löschen </a>
+                </p>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+
+</table>
